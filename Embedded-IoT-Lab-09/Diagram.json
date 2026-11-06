@@ -11,26 +11,26 @@
       "attrs": {}
     },
     {
-      "type": "wokwi-led",
-      "id": "led1",
+      "type": "wokwi-resistor",
+      "id": "r1",
       "top": 100,
       "left": 250,
       "attrs": {
-        "color": "red"
+        "value": "220"
       }
     },
     {
-      "type": "wokwi-resistor",
-      "id": "r1",
-      "top": 150,
-      "left": 150,
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 180,
+      "left": 350,
       "attrs": {
-        "value": "220"
+        "color": "red"
       }
     }
   ],
   "connections": [
-    ["esp:25", "r1:1", "green", []],
+    ["esp:26", "r1:1", "green", []],
     ["r1:2", "led1:A", "green", []],
     ["led1:C", "esp:GND.1", "black", []]
   ]
