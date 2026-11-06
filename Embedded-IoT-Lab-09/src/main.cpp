@@ -5,25 +5,19 @@
 void setup()
 {
     Serial.begin(115200);
-
-    Serial.println("LED Brightness Fade Program");
 }
 
 void loop()
 {
-    // Increase brightness
     for (int value = 0; value <= 255; value++)
     {
         dacWrite(DAC_PIN, value);
-
         delay(20);
     }
 
-    // Decrease brightness
     for (int value = 255; value >= 0; value--)
     {
         dacWrite(DAC_PIN, value);
-
         delay(20);
     }
 }
