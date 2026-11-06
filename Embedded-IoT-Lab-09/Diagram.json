@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "author": "Ayesha Azhar",
+  "author": "Ayesha",
   "editor": "wokwi",
   "parts": [
     {
@@ -27,11 +27,33 @@
       "attrs": {
         "color": "red"
       }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 280,
+      "left": 250,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 360,
+      "left": 350,
+      "attrs": {
+        "color": "blue"
+      }
     }
   ],
   "connections": [
-    ["esp:26", "r1:1", "green", []],
+    ["esp:25", "r1:1", "green", []],
     ["r1:2", "led1:A", "green", []],
-    ["led1:C", "esp:GND.1", "black", []]
+    ["led1:C", "esp:GND.1", "black", []],
+
+    ["esp:18", "r2:1", "blue", []],
+    ["r2:2", "led2:A", "blue", []],
+    ["led2:C", "esp:GND.2", "black", []]
   ]
 }
