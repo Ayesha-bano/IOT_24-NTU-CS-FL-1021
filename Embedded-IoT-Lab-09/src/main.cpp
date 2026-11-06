@@ -1,25 +1,30 @@
 #include <Arduino.h>
 
-#define LED_PIN 25
+#define DAC_PIN 25
+
+int values[] = {0, 64, 128, 192, 255};
 
 void setup()
 {
     Serial.begin(115200);
 
-    pinMode(LED_PIN, OUTPUT);
-
-    Serial.println("Task 1 Started!");
+    Serial.println("DAC Stepped Output Program");
 }
 
 void loop()
 {
-    digitalWrite(LED_PIN, HIGH);
-    Serial.println("LED ON");
+    for (int i = 0; i < 5; i++)
+    {
+        dacWrite(DAC_PIN, values[i]);
 
-    delay(1000);
+        Serial.print("DAC Value: ");
+        Serial.print(values[i]);
 
-    digitalWrite(LED_PIN, LOW);
-    Serial.println("LED OFF");
+        float voltage = (values[i] / 255.0) * 3.3;
 
-    delay(1000);
+        Serial.print(" | Voltage: ");
+        Serial.println(voltage);
+
+        delay(1000);
+    }
 }
