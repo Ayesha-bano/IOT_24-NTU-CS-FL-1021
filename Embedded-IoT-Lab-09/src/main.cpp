@@ -2,29 +2,28 @@
 
 #define DAC_PIN 25
 
-int values[] = {0, 64, 128, 192, 255};
-
 void setup()
 {
     Serial.begin(115200);
 
-    Serial.println("DAC Stepped Output Program");
+    Serial.println("LED Brightness Fade Program");
 }
 
 void loop()
 {
-    for (int i = 0; i < 5; i++)
+    // Increase brightness
+    for (int value = 0; value <= 255; value++)
     {
-        dacWrite(DAC_PIN, values[i]);
+        dacWrite(DAC_PIN, value);
 
-        Serial.print("DAC Value: ");
-        Serial.print(values[i]);
+        delay(20);
+    }
 
-        float voltage = (values[i] / 255.0) * 3.3;
+    // Decrease brightness
+    for (int value = 255; value >= 0; value--)
+    {
+        dacWrite(DAC_PIN, value);
 
-        Serial.print(" | Voltage: ");
-        Serial.println(voltage);
-
-        delay(1000);
+        delay(20);
     }
 }
